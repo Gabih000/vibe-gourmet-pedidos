@@ -1,0 +1,584 @@
+/* 1- Cores fontes e medidas */
+:root {
+    --vinho-fundo: #2F0306;
+    --vinho: #410509;
+    --vinho-cartao: #4F0A10;
+    --vinho-medio: #6B1219;
+    --borda: #7A2A31;
+    --borda-forte: #9B4A52;
+    --offwhite: #F6EBDD;
+    --offwhite-suave: #E8D6C4;
+
+    --fonte-titulo: 'Baloo 2', sans-serif;
+    --fonte-texto: 'Nunito', sans-serif;
+    --fonte-destaque: 'Dancing Script', cursive;
+
+    --raio-cartao: 16px;
+    --raio-botao: 10px;
+    --altura-campo: 44px;
+}
+
+
+/* 2- Base da pagina */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--vinho-fundo);
+    color: var(--offwhite);
+    font-family: var(--fonte-texto);
+}
+
+
+/*3- Icones */
+.icone {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+.icone--grande {
+    width: 30px;
+    height: 30px;
+    stroke-width: 1.7;
+}
+
+
+/* 4- Cabeçalho */
+.topo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 28px;
+    background: var(--vinho);
+    border-bottom: 1px solid var(--borda);
+}
+
+.topo__logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.topo__titulo {
+    flex: 1;
+}
+
+.topo__nome {
+    margin: 0;
+    font-family: var(--fonte-destaque);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.topo__subtitulo {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: var(--offwhite-suave);
+}
+
+.topo__contador {
+    text-align: right;
+    margin-right: 8px;
+}
+
+.topo__contador-texto {
+    display: block;
+    font-size: 12px;
+    color: var(--offwhite-suave);
+}
+
+.topo__contador-numero {
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.botao-topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: var(--altura-campo);
+    padding: 0 16px;
+    border: 1px solid var(--borda-forte);
+    border-radius: var(--raio-botao);
+    background: transparent;
+    color: var(--offwhite);
+    font: 700 14px var(--fonte-texto);
+    cursor: pointer;
+}
+
+.botao-topo:hover {
+    background: var(--vinho-medio);
+}
+
+
+/* 5- Painel */
+.painel {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 24px 28px;
+}
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* 6- Cartões */
+.cartao {
+    background: var(--vinho-cartao);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-cartao);
+    padding: 20px;
+}
+
+.cartao__titulo {
+    margin: 0 0 12px;
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.3px;
+}
+
+
+/* 7- Campos de texto*/
+.campo {
+    margin-bottom: 12px;
+}
+
+.campo:last-child {
+    margin-bottom: 0;
+}
+
+.campos-duplos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.campos-pagamento {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.campo__rotulo {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--offwhite-suave);
+}
+
+.campo__entrada {
+    width: 100%;
+    height: var(--altura-campo);
+    padding: 0 12px;
+    border: 0;
+    border-radius: var(--raio-botao);
+    background: var(--offwhite);
+    color: var(--vinho);
+    font: 600 15px var(--fonte-texto);
+}
+
+.campo__entrada::placeholder {
+    color: #8A5A5E;
+}
+
+.campo__entrada--valor {
+    text-align: right;
+}
+
+
+/* 8- Botões de item */
+.grade-itens {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.botao-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 100px;
+    padding: 8px;
+    border: 1px solid var(--borda-forte);
+    border-radius: 12px;
+    background: var(--vinho-medio);
+    color: var(--offwhite);
+    font: 700 13px var(--fonte-texto);
+    text-align: center;
+    cursor: pointer;
+}
+
+.botao-item:hover {
+    background: #7D1820;
+}
+
+.botao-item:active {
+    transform: scale(0.97);
+}
+
+.icone-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* 9- Pagamento */
+.opcoes-pagamento {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.botao-opcao {
+    flex: 1;
+    height: var(--altura-campo);
+    border: 1px solid var(--borda-forte);
+    border-radius: var(--raio-botao);
+    background: var(--vinho-medio);
+    color: var(--offwhite);
+    font: 700 14px var(--fonte-texto);
+    cursor: pointer;
+}
+
+.botao-opcao.ativo {
+    background: var(--offwhite);
+    color: var(--vinho);
+}
+
+
+/* 10- Resumo do pedido */
+.resumo {
+    display: flex;
+    flex-direction: column;
+}
+
+.resumo__cabecalho {
+    display: grid;
+    grid-template-columns: 56px 1fr 96px 44px;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--offwhite-suave);
+}
+
+.resumo__valor-titulo {
+    text-align: right;
+}
+
+.resumo__lista {
+    min-height: 120px;
+    margin-bottom: 12px;
+}
+
+.resumo__vazio {
+    margin: 0;
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+    color: var(--offwhite-suave);
+}
+
+.resumo .campo {
+    margin-bottom: 18px;
+}
+
+.resumo__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--borda);
+}
+
+.resumo__total-texto {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.resumo__total-valor {
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 36px;
+}
+
+.botao-enviar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 58px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 14px;
+    background: var(--offwhite);
+    color: var(--vinho);
+    font: 800 18px var(--fonte-titulo);
+    cursor: pointer;
+}
+
+.botao-enviar:hover {
+    background: #FFF6EA;
+}
+
+.botao-enviar:active {
+    transform: scale(0.99);
+}
+
+.botao-enviar .icone {
+    width: 24px;
+    height: 24px;
+}
+
+.resumo__aviso {
+    margin: 8px 0 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--offwhite-suave);
+}
+
+
+/* 11 - Itens do pedido e adicionais */
+.item-pedido {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--borda);
+}
+
+.item-pedido:last-child {
+    border-bottom: 0;
+}
+
+.linha-item {
+    display: grid;
+    grid-template-columns: 56px 1fr 96px 44px;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.linha-item__qtd {
+    padding: 0 4px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.linha-adicional {
+    display: grid;
+    grid-template-columns: 1fr 96px 44px;
+    gap: 8px;
+    align-items: center;
+    margin: 0 0 8px 64px;
+}
+
+.botao-adicional {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    margin-left: 64px;
+    padding: 0 12px;
+    border: 1px dashed var(--borda-forte);
+    border-radius: var(--raio-botao);
+    background: transparent;
+    color: var(--offwhite);
+    font: 700 13px var(--fonte-texto);
+    cursor: pointer;
+}
+
+.botao-adicional .icone {
+    width: 16px;
+    height: 16px;
+}
+
+.botao-adicional:hover {
+    background: var(--vinho-medio);
+}
+
+.linha-item__remover,
+.linha-adicional__remover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--altura-campo);
+    height: var(--altura-campo);
+    border: 1px solid var(--borda-forte);
+    border-radius: var(--raio-botao);
+    background: transparent;
+    color: var(--offwhite);
+    cursor: pointer;
+}
+
+.linha-item__remover:hover,
+.linha-adicional__remover:hover {
+    background: var(--vinho-medio);
+}
+
+
+/* 12- Acessibilidade */
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--offwhite);
+    outline-offset: 2px;
+}
+
+
+/* 13 - Responsividade  */
+@media (max-width: 900px) {
+    .painel {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .topo {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grade-itens {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .campos-duplos {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo__cabecalho,
+    .linha-item {
+        grid-template-columns: 48px 1fr 80px 44px;
+    }
+
+    .resumo__total-valor {
+        font-size: 30px;
+    }
+
+    .linha-adicional {
+        grid-template-columns: 1fr 80px 44px;
+        margin-left: 56px;
+    }
+
+    .botao-adicional {
+        margin-left: 56px;
+    }
+}
+
+/* 14- Fechamento do dia - janela */
+.janela {
+  width: min(420px, calc(100% - 32px));
+  padding: 24px;
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-cartao);
+  background: var(--vinho-cartao);
+  color: var(--offwhite);
+}
+
+.janela::backdrop {
+  background: rgba(20, 1, 3, 0.75);
+}
+
+.janela__titulo {
+  margin: 0 0 4px;
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.janela__data {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--offwhite-suave);
+}
+
+.janela__lista {
+  margin: 0 0 12px;
+}
+
+.janela__linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.janela__linha dt {
+  font-size: 15px;
+  color: var(--offwhite-suave);
+}
+
+.janela__linha dd {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.janela__linha--destaque dt {
+  font-weight: 700;
+  color: var(--offwhite);
+}
+
+.janela__linha--destaque dd {
+  font-size: 28px;
+}
+
+.janela__aviso {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--offwhite-suave);
+}
+
+.janela__botoes {
+  display: flex;
+  gap: 10px;
+}
+
+.janela__botao {
+  flex: 1;
+  height: 50px;
+  border: 1px solid var(--borda-forte);
+  border-radius: var(--raio-botao);
+  background: transparent;
+  color: var(--offwhite);
+  font: 700 15px var(--fonte-texto);
+  cursor: pointer;
+}
+
+.janela__botao--principal {
+  border-color: var(--offwhite);
+  background: var(--offwhite);
+  color: var(--vinho);
+  font: 800 17px var(--fonte-titulo);
+}
+
+.janela__botao:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

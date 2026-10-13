@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Gourmet - Pedidos</title>
+
+  <link rel="icon" type="image/jpeg" href="IMG/logovibegourmet.jpeg">
+
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Dancing+Script:wght@600&family=Nunito:wght@400;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="topo">
+
+
+
+    <!-- Logo -->
+    <img class="topo__logo" src="IMG/logovibegourmet.jpeg" alt="Logo da Vibe Gourmet">
+
+
+
+    <!-- Título -->
+    <div class="topo__titulo">
+      <h1 class="topo__nome">Pedidos</h1>
+      <p class="topo__subtitulo">Painel interno da loja</p>
+    </div>
+
+
+
+    <!-- Contador de pedidos -->
+    <div class="topo__contador">
+      <span class="topo__contador-texto">Pedidos de hoje</span>
+      <strong class="topo__contador-numero" id="contador-pedidos">0</strong>
+    </div>
+
+
+
+    <!-- Botão "exportar resumo" -->
+    <button class="botao-topo" id="botao-exportar" type="button">
+      <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 4v11M7 10l5 5 5-5" />
+        <path d="M5 20h14" />
+      </svg>
+      Exportar resumo
+    </button>
+
+
+
+    <!-- Botão "fechar o dia" -->
+    <button class="botao-topo" id="botao-fechar-dia" type="button">
+      <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 4h10v16H5z" />
+        <path d="M15 12h6M18 9l3 3-3 3" />
+      </svg>
+      Fechar o dia
+    </button>
+  </header>
+
+
+
+  <main class="painel">
+    <div class="coluna coluna--esquerda">
+
+      <!-- CLIENTE -->
+      <section class="cartao" id="secao-cliente">
+        <h2 class="cartao__titulo">Cliente</h2>
+
+        <div class="campos-duplos">
+          <div class="campo">
+            <label class="campo__rotulo" for="nome">Nome</label>
+            <input class="campo__entrada" type="text" id="nome" autocomplete="off">
+          </div>
+
+          <div class="campo">
+            <label class="campo__rotulo" for="telefone">Telefone</label>
+            <input class="campo__entrada" type="tel" id="telefone" placeholder="(19) 90000-0000" maxlength="15"
+              inputmode="numeric" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="campo">
+          <label class="campo__rotulo" for="endereco">Endereço</label>
+          <input class="campo__entrada" type="text" id="endereco" autocomplete="off">
+        </div>
+      </section>
+
+
+
+      <!-- ADICIONAR ITEM -->
+      <section class="cartao" id="secao-itens">
+        <h2 class="cartao__titulo">Adicionar item</h2>
+
+        <div class="grade-itens">
+
+          <button class="botao-item" type="button" data-item="Batata recheada">
+            <img class="icone-img" src="IMG/Batata.png" alt="" width="48" height="48">
+            <span>Batata recheada</span>
+          </button>
+
+          <button class="botao-item" type="button" data-item="Panqueca">
+            <img class="icone-img" src="IMG/Panqueca.png" alt="" width="48" height="48">
+            <span>Panqueca</span>
+          </button>
+
+          <button class="botao-item" type="button" data-item="Marmita">
+            <img class="icone-img" src="IMG/Marmita.png" alt="" width="48" height="48">
+            <span>Marmita</span>
+          </button>
+
+          <button class="botao-item" type="button" data-item="Escondidinho">
+            <img class="icone-img" src="IMG/Escondidinhos.png" alt="" width="48" height="48">
+            <span>Escondidinho</span>
+          </button>
+
+          <button class="botao-item" type="button" data-item="Pão de alho">
+            <img class="icone-img" src="IMG/Pao_de_alho.png" alt="" width="48" height="48">
+            <span>Pão de alho</span>
+          </button>
+
+          <button class="botao-item" type="button" data-item="Doce">
+            <img class="icone-img" src="IMG/Doces.png" alt="" width="48" height="48">
+            <span>Doce</span>
+          </button>
+
+        </div>
+      </section>
+
+
+
+      <!-- PAGAMENTO -->
+      <section class="cartao" id="secao-pagamento">
+        <h2 class="cartao__titulo">Pagamento</h2>
+
+        <div class="opcoes-pagamento">
+          <button class="botao-opcao ativo" type="button" data-pagamento="Pix">Pix</button>
+          <button class="botao-opcao" type="button" data-pagamento="Cartão">Cartão</button>
+          <button class="botao-opcao" type="button" data-pagamento="Dinheiro">Dinheiro</button>
+        </div>
+
+
+
+        <!-- Troco  -->
+        <div class="campos-duplos campos-pagamento">
+          <div class="campo" id="campo-troco" hidden>
+            <label class="campo__rotulo" for="troco">Troco para</label>
+            <input class="campo__entrada campo__entrada--valor" type="text" id="troco" inputmode="decimal"
+              placeholder="0,00" autocomplete="off">
+          </div>
+
+
+
+          <div class="campo">
+            <label class="campo__rotulo" for="taxa">Taxa de entrega</label>
+            <input class="campo__entrada campo__entrada--valor" type="text" id="taxa" inputmode="decimal" value="0,00"
+              autocomplete="off">
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+    <section class="cartao resumo" id="secao-resumo">
+      <h2 class="cartao__titulo">Resumo do pedido</h2>
+
+      <!-- Nomes das colunas da lista -->
+      <div class="resumo__cabecalho">
+        <span>Qtd</span>
+        <span>Item e sabor</span>
+        <span class="resumo__valor-titulo">Valor</span>
+        <span></span>
+      </div>
+
+
+
+      <!-- Lista de itens -->
+      <div class="resumo__lista" id="lista-itens">
+        <p class="resumo__vazio" id="aviso-vazio">Nenhum item ainda. Toque em um item para adicionar.</p>
+      </div>
+
+
+
+      <!-- Observações -->
+      <div class="campo">
+        <label class="campo__rotulo" for="observacoes">Observações</label>
+        <input class="campo__entrada" type="text" id="observacoes" placeholder="Ex.: sem cebola, portão azul"
+          autocomplete="off">
+      </div>
+
+
+
+      <!-- Total -->
+      <div class="resumo__total">
+        <span class="resumo__total-texto">Total</span>
+        <strong class="resumo__total-valor" id="total-pedido">R$ 0,00</strong>
+      </div>
+
+
+
+      <!-- Botão de enviar-->
+      <button class="botao-enviar" id="botao-enviar" type="button">
+        <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 3L10 14" />
+          <path d="M21 3l-7 18-4-7-7-4z" />
+        </svg>
+        <span id="texto-enviar">Enviar pedido no WhatsApp</span>
+      </button>
+
+      <p class="resumo__aviso">Abre o WhatsApp da Vibe Gourmet com o pedido completo</p>
+
+
+    </section>
+
+  </main>
+
+
+
+  <!-- Molde de um item do pedido -->
+  <template id="modelo-linha">
+    <div class="item-pedido">
+
+      <div class="linha-item">
+        <input class="campo__entrada linha-item__qtd" type="number" min="1" value="1" aria-label="Quantidade">
+        <input class="campo__entrada linha-item__descricao" type="text" aria-label="Item e sabor" autocomplete="off">
+        <input class="campo__entrada campo__entrada--valor linha-item__valor" type="text" inputmode="decimal"
+          placeholder="0,00" aria-label="Valor" autocomplete="off">
+        <button class="linha-item__remover" type="button" aria-label="Remover item">
+          <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" />
+          </svg>
+        </button>
+      </div>
+
+
+
+      <!-- Adicionais do item -->
+      <div class="adicionais"></div>
+
+      <button class="botao-adicional" type="button">
+        <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+        Adicional
+      </button>
+    </div>
+  </template>
+
+
+
+  <!-- Molde de um adicional -->
+  <template id="modelo-adicional">
+    <div class="linha-adicional">
+      <input class="campo__entrada linha-adicional__descricao" type="text" list="lista-adicionais"
+        placeholder="Ex.: queijo muçarela" aria-label="Adicional" autocomplete="off">
+      <input class="campo__entrada campo__entrada--valor linha-adicional__valor" type="text" inputmode="decimal"
+        placeholder="0,00" aria-label="Valor do adicional" autocomplete="off">
+      <button class="linha-adicional__remover" type="button" aria-label="Remover adicional">
+        <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" />
+        </svg>
+      </button>
+    </div>
+  </template>
+
+
+
+  <!-- Sugestões de adicionais -->
+  <datalist id="lista-adicionais">
+    <option value="Queijo muçarela">
+    <option value="Catupiry">
+    <option value="Cheddar">
+    <option value="Milho">
+    <option value="Azeitona">
+    <option value="Bacon">
+    <option value="Batata palha">
+    <option value="Cebola crispy">
+    <option value="Cebola roxa">
+    <option value="Rúcula">
+    <option value="Molho da casa de bacon">
+    <option value="Molho da casa de alho">
+    <option value="Arroz branco">
+  </datalist>
+
+
+
+  <!-- Fechamento do dia -->
+  <dialog class="janela" id="janela-fechar-dia" aria-labelledby="janela-titulo">
+    <h2 class="janela__titulo" id="janela-titulo">Fechar o dia</h2>
+    <p class="janela__data" id="janela-data"></p>
+
+    <dl class="janela__lista">
+      <div class="janela__linha">
+        <dt>Pedidos do dia</dt>
+        <dd id="janela-pedidos">0</dd>
+      </div>
+      <div class="janela__linha">
+        <dt>Total do dia (com taxas)</dt>
+        <dd id="janela-total">R$ 0,00</dd>
+      </div>
+      <div class="janela__linha janela__linha--destaque">
+        <dt>Total de taxas (motoboy)</dt>
+        <dd id="janela-taxas">R$ 0,00</dd>
+      </div>
+    </dl>
+
+    <p class="janela__aviso" id="janela-aviso"></p>
+
+    <div class="janela__botoes">
+      <button class="janela__botao" id="janela-cancelar" type="button">Voltar</button>
+      <button class="janela__botao janela__botao--principal" id="janela-confirmar" type="button">Fechar o dia</button>
+    </div>
+  </dialog>
+
+</body>
+
+<script src="script.js" defer></script>
+
+</html>
